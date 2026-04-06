@@ -1,1 +1,42 @@
+from pygame import *
 
+import sys
+
+init()
+
+gato_mingau = image.load("gato_mingau.png")
+gato_mingau = transform.scale(gato_mingau, (200, 200))
+
+gato_font = font.Font("gato_mingau.ttf", 50)
+
+window = display.set_mode((1280, 720))
+
+window.fill((151, 209, 250))
+
+mixer.music.load("lo-siento-wilson-naufrago.mp3")
+mixer.music.play(-1)
+
+while True:
+    for ev in event.get():
+        if ev.type == QUIT:
+            quit()
+            sys.exit()
+
+    #Desenhar a partir daqui
+    
+    draw.rect(window, (100, 100, 100), (350, 290, 300, 300))
+    draw.rect(window, (121, 77, 27), (500, 420, 90, 170))
+    draw.circle(window, (255, 243, 81), (200, 130), 60)
+    draw.line(window, (255, 243, 81), (200, 130), (200, 250), 5)
+    draw.line(window, (255, 243, 81), (200, 130), (200, 10), 5)
+    draw.polygon(window, (242, 135, 59), ((250, 350), (400, 180), (550, 350)))
+    
+    #Desenhar gato do mingau
+
+    window.blit(gato_mingau, (600, 600))
+
+    #Desenhar texto
+
+    gato_text = gato_font.render("Wilson ama mingau", True, (0, 0, 0))
+
+    display.update()
